@@ -326,10 +326,7 @@ class Portal extends Controlador
 
     public function MntUsuario()
     {
-        $this->datos['rolesPermitidos'] = [1, 2];          // Definimos los roles que tendran acceso
-        if (!tienePrivilegios($this->datos['usuarioSesion']->rol_id, $this->datos['rolesPermitidos'])) {
-            redireccionar('/');
-        } else if (isset($_GET["op"])) {
+        if (isset($_GET["op"])) {
             $html = "";
 
             switch ($_GET["op"]) {
@@ -440,7 +437,12 @@ class Portal extends Controlador
                     $this->usuarioModelo->update_usuario_pass($_POST["usu_id"], $_POST["usu_pass"]);
                     break;
             }
-        } else $this->vista('MntUsuario/index', $this->datos);
+        } else {
+            $this->datos['rolesPermitidos'] = [2];          // Definimos los roles que tendran acceso
+            if (!tienePrivilegios($this->datos['usuarioSesion']->rol_id, $this->datos['rolesPermitidos'])) {
+                redireccionar('/');
+            } else $this->vista('MntUsuario/index', $this->datos);
+        }
     }
 
     public function DetalleIncidencia()
