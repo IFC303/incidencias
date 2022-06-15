@@ -1,16 +1,14 @@
 <?php
+// Ruta de la aplicacion
+define('RUTA_APP', dirname(dirname(__FILE__)));
 
-    // Ruta de la aplicacion
-    define('RUTA_APP', dirname(dirname(__FILE__)));
+// Ruta url, Ejemplo: http://localhost/daw2_mvc
+define('RUTA_URL', "http://{$_SERVER['HTTP_HOST']}/incidencias");
 
-    // Ruta url, Ejemplo: http://localhost/daw2_mvc
-    define('RUTA_URL', 'http://localhost/mvc_completo');
+define('NOMBRE_SITIO', 'Incidencias');
 
-    define('NOMBRE_SITIO', 'CRUD MVC - DAW2 Alcañiz');
-
-
-    // Configuracion de la Base de Datos
-    define('DB_HOST', 'localhost');
-    define('DB_USUARIO', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_NOMBRE', 'crud_mvc');
+// Configuracion de la Base de Datos
+define('DB_HOST', $_SERVER['HTTP_HOST'] == 'localhost' ? 'localhost' : 'mysql');
+define('DB_USUARIO', 'root');
+define('DB_PASSWORD', 'toor');
+define('DB_NOMBRE', 'incidencias');

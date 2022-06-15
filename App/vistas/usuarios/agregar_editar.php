@@ -1,11 +1,11 @@
-<?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
+<?php require_once RUTA_APP . '/vistas/inc/header.php' ?>
 
 <?php
-    if (isset($datos['usuario']->id_usuario)){
-        $accion = "Modificar";
-    } else {
-        $accion = "Agregar";
-    }
+if (isset($datos['usuario']->id_usuario)) {
+    $accion = "Modificar";
+} else {
+    $accion = "Agregar";
+}
 ?>
 
 <a href=".." class="btn btn-light"><i class="bi bi-chevron-double-left"></i>Volver</a>
@@ -29,18 +29,18 @@
         <div class="mb-3">
             <label for="rol">Rol: <sup>*</sup></label>
             <select name="rol" id="rol" class="form-select form-select-lg">
-                <?php foreach($datos['listaRoles'] as $rol): ?>
-                    <?php if ($rol->id_rol == $datos['usuario']->id_rol):?>
-                        <option value="<?php echo $rol->id_rol?>" selected><?php echo $rol->rol?></option>
-                    <?php else: ?>
-                        <option value="<?php echo $rol->id_rol?>"><?php echo $rol->rol?></option>
+                <?php foreach ($datos['listaRoles'] as $rol) : ?>
+                    <?php if ($rol->id_rol == $datos['usuario']->id_rol) : ?>
+                        <option value="<?php echo $rol->id_rol ?>" selected><?php echo $rol->rol ?></option>
+                    <?php else : ?>
+                        <option value="<?php echo $rol->id_rol ?>"><?php echo $rol->rol ?></option>
                     <?php endif ?>
                 <?php endforeach ?>
             </select>
         </div>
         <input type="submit" class="btn btn-success" value="<?php echo $accion ?> Usuario">
     </form>
-    
+
 </div>
 
-<?php require_once RUTA_APP.'/vistas/inc/footer.php' ?>
+<?php require_once RUTA_APP . '/vistas/inc/footer.php' ?>

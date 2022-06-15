@@ -1,4 +1,4 @@
-<?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
+<?php require_once RUTA_APP . '/vistas/inc/header.php' ?>
 
 <a href=".." class="btn btn-light"><i class="bi bi-chevron-double-left"></i>Volver</a>
 
@@ -20,8 +20,7 @@
         </div>
         <input type="submit" class="btn btn-success" value="Borrar Usuario">
     </form>
-    
+
 </div>
 
-<?php require_once RUTA_APP.'/vistas/inc/footer.php' ?>
-
+<?php require_once RUTA_APP . '/vistas/inc/footer.php' ?>

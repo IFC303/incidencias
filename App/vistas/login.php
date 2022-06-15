@@ -1,37 +1,95 @@
-<?php require_once RUTA_APP.'/vistas/inc/header_no_logueado.php' ?>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="<?php echo RUTA_URL ?>/public/css/separate/pages/login.min.css">
+  <link rel="stylesheet" href="<?php echo RUTA_URL ?>/public/css/lib/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo RUTA_URL ?>/public/css/lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo RUTA_URL ?>/public/css/main.css">
+</head>
 
-<a href=".." class="btn btn-light"><i class="bi bi-chevron-double-left"></i>Volver</a>
+<body>
+  <div class="page-center">
+    <div class="page-center-in">
+      <div class="container-fluid">
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Login</h1>
-  </div>   
+        <form class="sign-box" action="" method="post" id="login_form">
 
-  <form method="post" class="card-body">
-    <div class="form-floating mb-3">
-      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="" required>
-      <label for="floatingInput">Email address</label>
-    </div>
-    <input type="submit" class="btn btn-success" value="Login">
+          <input type="hidden" id="rol_id" name="rol_id" value="1">
 
-  </form>
+          <div class="sign-avatar">
+            <img src="public/img/logo.png" alt="" id="imgtipo">
+          </div>
+          <header class="sign-title" id="lbltitulo">Incidencias</header>
 
-  <?php if (isset($datos['error']) && $datos['error'] == 'error_1' ): ?>
+          <?php
+          if (isset($_GET["error"])) {
+            switch ($_GET["error"]) {
+              case "incorrecto";
+          ?>
+                <div class="alert alert-warning alert-icon alert-close alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <i class="font-icon font-icon-warning"></i>
+                  Usuario/contraseña incorrecta
+                </div>
+              <?php
+                break;
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-      </symbol>
-    </svg>
+              case "vacio";
+              ?>
+                <div class="alert alert-warning alert-icon alert-close alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <i class="font-icon font-icon-warning"></i>
+                  Los campos estan vacios.
+                </div>
+          <?php
+                break;
+            }
+          }
+          ?>
 
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
-      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-      <div>
-        Intentelo de nuevo. <strong>El Email no existe!!!</strong>
+          <div class="form-group">
+            <input type="text" id="usu_correo" name="usu_correo" class="form-control" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <input type="password" id="usu_pass" name="usu_pass" class="form-control" placeholder="Password" required/>
+          </div>
+          <input type="hidden" name="enviar" class="form-control" value="si">
+          <button type="submit" class="btn btn-rounded">Iniciar sesión</button>
+        </form>
       </div>
     </div>
+  </div>
 
-  <?php endif ?>
+  <script src="<?php echo RUTA_URL ?>/public/js/lib/jquery/jquery.min.js"></script>
+  <script src="<?php echo RUTA_URL ?>/public/js/lib/tether/tether.min.js"></script>
+  <script src="<?php echo RUTA_URL ?>/public/js/lib/bootstrap/bootstrap.min.js"></script>
+  <script src="<?php echo RUTA_URL ?>/public/js/plugins.js"></script>
+  <script type="text/javascript" src="<?php echo RUTA_URL ?>/public/js/lib/match-height/jquery.matchHeight.min.js"></script>
+  <script>
+    $(function() {
+      $('.page-center').matchHeight({
+        target: $('html')
+      });
 
-</div>
-<?php require_once RUTA_APP.'/vistas/inc/footer.php' ?>
+      $(window).resize(function() {
+        setTimeout(function() {
+          $('.page-center').matchHeight({
+            remove: true
+          });
+          $('.page-center').matchHeight({
+            target: $('html')
+          });
+        }, 100);
+      });
+    });
+    false
+  </script>
+  <script src="<?php echo RUTA_URL ?>/public/js/app.js"></script>
+
+  <script type="text/javascript" src="<?php echo RUTA_URL ?>/public/js/datos.js"></script>
+</body>
